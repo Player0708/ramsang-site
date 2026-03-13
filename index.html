@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramsang · custom wooden photo prints</title>
+    <!-- Font Awesome 6 (professional icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: modern serif for logo + clean sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbf9f7;
+            color: #2e2a27;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* premium wood grain texture (subtle) */
+        .wood-bg {
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBkPSJNMCAwaDQwdjQwSDB6IiBmaWxsPSIjZTJlYWRiNCIvPjxwYXRoIGQ9Ik0wIDVoNDBNMCAxMGg0ME0wIDE1aDQwTTAgMjBoNDBNMCAyNWg0ME0wIDMwaDQwTTAgMzVoNDAiIHN0cm9rZT0iI2Q0YzBiNCIgc3Ryb2tlLXdpZHRoPSIxLjIiIGZpbGw9Im5vbmUiLz48L3N2Zz4=');
+            background-repeat: repeat;
+            background-size: 100px 100px;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(173, 144, 120, 0.2);
+        }
+
+        /* ----- LOGO with local image ----- */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon img {
+            width: 48px;
+            height: 48px;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(100, 70, 40, 0.2));
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(145deg, #4d3b2c, #754e2e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+            text-shadow: 0 2px 5px rgba(160, 120, 70, 0.15);
+        }
+
+        .logo-text span {
+            font-weight: 400;
+            font-size: 1.2rem;
+            color: #a77b5a;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.3px;
+            margin-left: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            font-weight: 500;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2e2a27;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #b17d56;
+        }
+
+        .nav-icon {
+            background-color: #4d3b2c;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .nav-icon:hover {
+            background-color: #6b523b;
+            color: white;
+        }
+
+        /* hero section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            padding: 50px 0 70px;
+        }
+
+        .hero-content {
+            flex: 1 1 350px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #ece3db;
+            border-radius: 40px;
+            padding: 6px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #5a3f2b;
+            margin-bottom: 24px;
+            letter-spacing: 0.3px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #1f1b17;
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 i {
+            color: #b17d56;
+            font-style: normal;
+            border-bottom: 3px solid #e1cbb9;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: #4f4a45;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #4d3b2c;
+            color: white;
+            border: none;
+            padding: 14px 42px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 10px 20px -8px rgba(77, 59, 44, 0.3);
+            border: 1px solid transparent;
+        }
+
+        .btn-primary:hover {
+            background: #35291f;
+            transform: scale(1.02);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #4d3b2c;
+            color: #2e2a27;
+            padding: 14px 42px;
+            border-radius: 100px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+
+        .btn-outline:hover {
+            background: #4d3b2c10;
+            border-color: #6f523b;
+        }
+
+        .hero-image {
+            flex: 1 1 350px;
+            background: #ddd3c9;
+            border-radius: 40px;
+            height: 440px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(145deg, #bba88b, #9b846b);
+            box-shadow: 0 30px 40px -20px rgba(0,0,0,0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 85%;
+            height: auto;
+            filter: drop-shadow(0 15px 12px rgba(0,0,0,0.2));
+            transition: 0.3s;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* product showcase / how it works */
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 600;
+            margin: 60px 0 30px;
+            color: #2e2a27;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #dabb9b;
+            margin-top: 12px;
+            border-radius: 4px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 32px;
+            box-shadow: 0 15px 30px -12px rgba(86, 66, 46, 0.08);
+            transition: all 0.2s;
+            border: 1px solid #f0e7df;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: #dcc9b6;
+            box-shadow: 0 30px 35px -15px rgba(77, 59, 44, 0.15);
+        }
+
+        .feature-icon {
+            background: #f4ebe3;
+            width: 70px;
+            height: 70px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #6b4f38;
+            margin-bottom: 30px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #5f554b;
+        }
+
+        /* gallery / product examples — now using local images */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 40px 0 60px;
+            justify-content: center;
+        }
+
+        .gallery-item {
+            flex: 1 1 220px;
+            border-radius: 32px;
+            height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 30px 20px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: inset 0 -60px 40px -30px rgba(0,0,0,0.4);
+            color: white;
+            font-weight: 600;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            background-color: #8b6f4c; /* fallback */
+        }
+
+        /* local product images from "images" folder (same directory) */
+        .gallery-item:nth-child(1) {
+            background-image: linear-gradient(0deg, #3f2e1e, transparent), url('images/product1.jpg');
+        }
+        .gallery-item:nth-child(2) {
+            background-image: linear-gradient(0deg, #3f2e1e, transparent), url('images/product2.jpg');
+        }
+        .gallery-item:nth-child(3) {
+            background-image: linear-gradient(0deg, #3f2e1e, transparent), url('images/product3.jpg');
+        }
+        .gallery-item:nth-child(4) {
+            background-image: linear-gradient(0deg, #3f2e1e, transparent), url('images/product4.jpg');
+        }
+
+        .gallery-item span {
+            font-size: 1.4rem;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(4px);
+            padding: 8px 18px;
+            border-radius: 60px;
+        }
+
+        /* upload / call to action */
+        .upload-section {
+            background: #4d3b2c;
+            border-radius: 60px;
+            padding: 70px 40px;
+            color: white;
+            margin: 80px 0;
+            background-image: radial-gradient(circle at 80% 30%, #7c6248, #35271d);
+        }
+
+        .upload-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .upload-text {
+            flex: 1 1 300px;
+        }
+
+        .upload-text h2 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .upload-text p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 30px;
+        }
+
+        .upload-panel {
+            flex: 1 1 380px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 40px;
+            border: 1px solid rgba(255,215,180,0.25);
+        }
+
+        .upload-area {
+            border: 2px dashed rgba(255, 215, 180, 0.5);
+            border-radius: 40px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: #eecbad;
+            background: rgba(255,255,240,0.05);
+        }
+
+        .upload-area i {
+            font-size: 3rem;
+            color: #dbb99b;
+            margin-bottom: 15px;
+        }
+
+        .upload-area p {
+            font-size: 1.1rem;
+        }
+
+        .upload-area .small {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 15px;
+        }
+
+        #file-name {
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .cta-btn {
+            background: #f5dcc8;
+            color: #2e2a27;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            width: 100%;
+            margin-top: 25px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .cta-btn:hover {
+            background: #ffe5d1;
+            transform: scale(1.02);
+        }
+
+        /* review / trust */
+        .testimonials {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 60px 0;
+        }
+
+        .testi {
+            background: white;
+            padding: 30px 35px;
+            border-radius: 40px;
+            flex: 1 1 260px;
+            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.05);
+        }
+
+        .testi i {
+            color: #dbb99b;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .testi p {
+            font-size: 1.05rem;
+            margin: 15px 0;
+            color: #3b332d;
+        }
+
+        .testi h4 {
+            font-weight: 600;
+            color: #846b53;
+        }
+
+        /* footer */
+        .footer {
+            border-top: 1px solid #e2d7ce;
+            padding: 40px 0;
+            margin-top: 70px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            color: #4d423b;
+        }
+
+        .social i {
+            font-size: 1.6rem;
+            margin-left: 20px;
+            color: #7e6854;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .social i:hover {
+            color: #35291f;
+        }
+
+        /* interactive simulation */
+        .upload-area input {
+            display: none;
+        }
+
+        /* responsive */
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- fixed wood grain texture overlay -->
+    <div class="wood-bg" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1;"></div>
+
+    <div class="container">
+        <!-- navigation with LOCAL LOGO (images/logo.png) -->
+        <nav class="navbar">
+            <div class="logo">
+                <!-- company logo from local file (same folder /images) -->
+                <div class="logo-icon">
+                    <img src="images/logo.png" alt="Ramsang Logo" width="48" height="48">
+                </div>
+                <!-- company name with attractive font -->
+                <div class="logo-text">RAMSANG <span>— woodcraft</span></div>
+            </div>
+            <div class="nav-links">
+                <a href="#">shop</a>
+                <a href="#">gallery</a>
+                <a href="#">why wood</a>
+                <a href="#" class="nav-icon"><i class="fas fa-cloud-upload-alt" style="font-size:1rem;"></i> upload photo</a>
+            </div>
+        </nav>
+
+        <!-- hero -->
+        <div class="hero">
+            <div class="hero-content">
+                <span class="hero-badge"><i class="fas fa-tree" style="margin-right:8px;"></i> sustainable hardwood</span>
+                <h1>your photo, <i>forever</i><br>printed on wood</h1>
+                <p class="hero-desc">Turn your favourite memory into a durable, textured wooden masterpiece. 100% natural, each piece unique.</p>
+                <div class="btn-group">
+                    <button class="btn-primary" onclick="document.querySelector('.upload-area').click()">📸 start with photo</button>
+                    <button class="btn-outline">explore products</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- decorative product representation (you can replace with local image) -->
+                <img src="images/hero-product.jpg" alt="wooden photo sample" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\' viewBox=\'0 0 400 300\'%3E%3Crect width=\'340\' height=\'240\' x=\'30\' y=\'30\' fill=\'%23b48b5a\' rx=\'40\'/%3E%3Crect width=\'280\' height=\'180\' x=\'60\' y=\'60\' fill=\'%23efdbca\' rx=\'24\'/%3E%3C/svg%3E';">
+            </div>
+        </div>
+
+        <!-- features / selling points -->
+        <h2 class="section-title">why choose Ramsang</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                <h3>real wood</h3>
+                <p>Birch, oak or walnut — premium FSC-certified wood slices.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-fill-drip"></i></div>
+                <h3>hd printing</h3>
+                <p>Direct UV bonding, waterproof and fade-resistant for decades.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                <h3>hand finished</h3>
+                <p>Every edge is sanded, oiled and ready to hang or stand.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-gift"></i></div>
+                <h3>gift ready</h3>
+                <p>Packaged in recycled kraft with a story card — zero plastic.</p>
+            </div>
+        </div>
+
+        <!-- sample gallery (using your local product images) -->
+        <h2 class="section-title">memories in grain</h2>
+        <div class="gallery">
+            <div class="gallery-item"><span>family</span></div>
+            <div class="gallery-item"><span>pet</span></div>
+            <div class="gallery-item"><span>landscape</span></div>
+            <div class="gallery-item"><span>artwork</span></div>
+        </div>
+
+        <!-- UPLOAD / SELL CORE: interactive photo upload -->
+        <div class="upload-section" id="upload">
+            <div class="upload-wrapper">
+                <div class="upload-text">
+                    <h2>sell your product — <br>your photo, our wood</h2>
+                    <p>Upload any image, choose a size, and we'll transform it into a handmade wooden print. You set the price, we handle production & drop-shipping.</p>
+                    <p><i class="fas fa-check-circle" style="color:#eecbad;"></i> &nbsp;bulk & single orders · worldwide shipping</p>
+                </div>
+                <div class="upload-panel">
+                    <div class="upload-area" id="dropArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>drag & drop or click to select</p>
+                        <p class="small">supports: jpg, png, heic (max 30mb)</p>
+                        <input type="file" id="fileInput" accept="image/png, image/jpeg, image/heic, image/jpg">
+                        <div id="file-name"></div>
+                    </div>
+                    <button class="cta-btn" id="sellBtn"><i class="fas fa-tag" style="margin-right:10px;"></i> sell this product</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- trust & testimonials -->
+        <div class="testimonials">
+            <div class="testi">
+                <i class="fas fa-quote-right"></i>
+                <p>“I uploaded a polaroid of my grandma. The grain and colours are stunning — sold 15 within a week.”</p>
+                <h4>— martha, illustrator</h4>
+            </div>
+            <div class="testi">
+                <i class="fas fa-quote-right"></i>
+                <p>“Ramsang handles everything. I just send photos, they print, pack and ship. My customers are obsessed.”</p>
+                <h4>— jasper, shop owner</h4>
+            </div>
+            <div class="testi">
+                <i class="fas fa-quote-right"></i>
+                <p>“The quality is insane. It feels like a piece of art, not just a photo. I’ve reordered 4 times.”</p>
+                <h4>— elena, interior designer</h4>
+            </div>
+        </div>
+
+        <!-- footer / social proof -->
+        <footer class="footer">
+            <div>© 2025 RAMSANG — natural photo prints</div>
+            <div class="social">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-pinterest"></i>
+                <i class="fab fa-facebook-f"></i>
+            </div>
+        </footer>
+    </div>
+
+    <!-- simple JS for upload interaction (demo) -->
+    <script>
+        (function() {
+            const dropArea = document.getElementById('dropArea');
+            const fileInput = document.getElementById('fileInput');
+            const fileNameDiv = document.getElementById('file-name');
+            const sellBtn = document.getElementById('sellBtn');
+
+            dropArea.addEventListener('click', (e) => {
+                fileInput.click();
+            });
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, (e) => e.preventDefault());
+                dropArea.addEventListener(eventName, (e) => e.stopPropagation());
+            });
+
+            dropArea.addEventListener('dragover', () => {
+                dropArea.style.borderColor = '#b48b5a';
+                dropArea.style.backgroundColor = 'rgba(255,240,230,0.15)';
+            });
+            dropArea.addEventListener('dragleave', () => {
+                dropArea.style.borderColor = 'rgba(255, 215, 180, 0.5)';
+                dropArea.style.backgroundColor = 'transparent';
+            });
+
+            dropArea.addEventListener('drop', (e) => {
+                dropArea.style.borderColor = 'rgba(255, 215, 180, 0.5)';
+                dropArea.style.backgroundColor = 'transparent';
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    displayFileName(files[0]);
+                }
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                if (fileInput.files.length > 0) {
+                    displayFileName(fileInput.files[0]);
+                } else {
+                    fileNameDiv.innerText = '';
+                }
+            });
+
+            function displayFileName(file) {
+                fileNameDiv.innerHTML = `<i class="fas fa-check-circle" style="color: #dbb99b;"></i> ready: ${file.name} (${(file.size / 1024).toFixed(1)} kb)`;
+            }
+
+            sellBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (fileInput.files.length > 0) {
+                    alert(`✨ Thank you! Your product "${fileInput.files[0].name}" is ready to list on Ramsang. (demo — full seller flow would open here)`);
+                } else {
+                    alert('📸 Please select a photo first. Drag or click the upload area.');
+                }
+            });
+        })();
+    </script>
+    <!-- make nav icon trigger upload -->
+    <script>
+        document.querySelector('.nav-icon').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.upload-area').click();
+        });
+    </script>
+</body>
+</html>
